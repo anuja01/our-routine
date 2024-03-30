@@ -1,0 +1,35 @@
+# Use a base image with Node.js
+FROM node:21-alpine AS build
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install all dependencies (including devDependencies for TypeScript)
+RUN yarn
+
+# Copy the rest of the application source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Use a lightweight Node.js base image for serving the app
+FROM node:21-alpine AS production
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built app from the 'build' stage
+COPY --from=build /app/dist ./build
+
+# Install serve for serving the static files
+RUN npm install -g serve
+
+# Expose port 8080
+EXPOSE 3000
+
+# Command to serve the built app using serve
+CMD ["serve", "-s", "build"]
