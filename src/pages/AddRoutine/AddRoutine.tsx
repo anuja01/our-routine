@@ -34,7 +34,7 @@ const AddRoutine: React.FC = () => {
         validationSchema={validationSchema}
         onSubmit={(values) => {
           //TODO
-          alert(`Routine "${values.routineName}" added with steps: ${values.routineSteps.join(', ')}`);
+          alert(`Feature in progress, Thank you!`);
           navigate('/');
         }}
       >
