@@ -35,6 +35,7 @@ const AddRoutine: React.FC = () => {
         onSubmit={(values) => {
           //TODO
           alert(`Feature in progress, Thank you!`);
+          console.info(values)
           navigate('/');
         }}
       >
