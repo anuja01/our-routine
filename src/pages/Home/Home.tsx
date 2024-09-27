@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
-import { Alert, Box, CircularProgress, styled, Typography } from "@mui/material";
+import { Alert, Box, CircularProgress, styled, Typography, Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add"; // Import the Add icon
 import { fetchRoutines } from "../../api/routines";
 import { useFetchData } from "../../hooks/useFetchData";
 
@@ -62,18 +63,25 @@ const Home: React.FC = () => {
       ) : (
         <>
           {routines?.map((routine) => (
-            <>
-              <Item
-                key={routine.id}
-                elevation={3}
-                onClick={() => navigate(`/routine/${routine.id}`)}
-              >
-                {routine.name}
-              </Item>
-            </>
+            <Item
+              key={routine.id}
+              elevation={3}
+              onClick={() => navigate(`/routine/${routine.id}`)}
+            >
+              {routine.name}
+            </Item>
           ))}
         </>
       )}
+      
+      <Fab 
+        color="primary" 
+        aria-label="add" 
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+        onClick={() => navigate('/add-routine')}
+      >
+        <AddIcon />
+      </Fab>
     </div>
   );
 };
