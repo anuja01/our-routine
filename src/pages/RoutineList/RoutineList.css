@@ -1,0 +1,29 @@
+.routine-list {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+  
+  .navigation-button {
+    display: flex;
+    justify-content: center;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .colorful-header {
+    font-weight: bold;
+    font-size: 24px;
+    background: linear-gradient(45deg, #87A2FF, #4379F2); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite;
+    text-align: center;
+    margin-bottom: 20px;
+  }

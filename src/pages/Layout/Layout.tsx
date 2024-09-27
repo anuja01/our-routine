@@ -1,21 +1,44 @@
+import React from 'react';
 import { Link, Outlet } from "react-router-dom";
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeIcon from '@mui/icons-material/Home';
+import SettingsIcon from '@mui/icons-material/Settings';
+import './Layout.css';
 
 function Layout() {
+  const [value, setValue] = React.useState(0);
+
+  const handleNavigationChange = (event: React.ChangeEvent<unknown>, newValue: number) => {
+    setValue(newValue);
+    console.info(event.target)
+  };
+
   return (
-    <div>
-      {/* A "layout route" is a good place to put markup you want to
-            share across all the pages on your site, like navigation. */}
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* An <Outlet> renders whatever child route is currently active,
-            so you can think about this <Outlet> as a placeholder for
-            the child routes we defined above. */}
-      <Outlet />
+    <div className="layout-container">
+      {/* The Outlet will render the child route components */}
+      <div className="content">
+        <Outlet />
+      </div>
+      <BottomNavigation
+        value={value}
+        onChange={handleNavigationChange}
+        showLabels
+        className="bottom-nav"
+      >
+        <BottomNavigationAction 
+          label="Home" 
+          icon={<HomeIcon />} 
+          component={Link} 
+          to="/" 
+        />
+        <BottomNavigationAction 
+          label="Settings" 
+          icon={<SettingsIcon />} 
+          component={Link} 
+          to="/settings" 
+        />
+      </BottomNavigation>
     </div>
   );
 }
