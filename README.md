@@ -1,6 +1,11 @@
 # Our Routine  
 
-## Requirements
+## The application is intented to run as a PWA (Progressive web app)
+Please visit https://6b4f-95-140-187-78.ngrok-free.app/ from mobile browser   
+Press 'share' icon next to browsers address bar   
+Then select 'Add to Home Screen'
+
+## Development Requirements
 node js > v21  
 docker
 
